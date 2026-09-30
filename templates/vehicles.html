@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Vehicles{% endblock %}
+{% block body %}
+<section class="page-hero compact">
+  <div class="container">
+    <span class="eyebrow">THE FLEET</span>
+    <h1>Find a car that fits the trip.</h1>
+    <p>Welcome back, {{ request.user.first_name|default:request.user.username }}. Pick a vehicle and start your booking.</p>
+  </div>
+</section>
+<section class="section-pad pt-4">
+  <div class="container">
+    <div class="row g-4">
+      {% for i in car %}
+      <div class="col-md-6 col-lg-4">
+        <article class="car-card h-100">
+          <div class="car-image-wrap"><img src="{% if i.image.name|slice:":11" == 'car/images/' %}{% static i.image.name|cut:'car/images/' %}{% else %}{{ i.image.url }}{% endif %}" alt="{{ i.car_name }}" class="car-image"></div>
+          <div class="p-4 d-flex flex-column">
+            <div class="d-flex justify-content-between gap-2"><h3>{{ i.car_name }}</h3><span class="price-tag">₹{{ i.price|floatformat:0 }}</span></div>
+            <p class="muted-copy flex-grow-1">{{ i.car_desc }}</p>
+            <div class="d-flex justify-content-between align-items-center small text-secondary mb-3"><span><i class="bi bi-speedometer2"></i> Daily rate</span><span>₹{{ i.price|floatformat:0 }}/day</span></div>
+            <a class="btn btn-dark w-100" href="{% url 'bill' %}?car={{ i.car_name|urlencode }}">Rent {{ i.car_name }}</a>
+          </div>
+        </article>
+      </div>
+      {% empty %}
+      <div class="col-12"><div class="empty-state"><i class="bi bi-car-front"></i><h3>No vehicles available</h3><p>Add vehicles from the Django admin panel.</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

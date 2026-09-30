@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}My Bookings{% endblock %}
+{% block body %}
+<section class="page-hero compact"><div class="container"><span class="eyebrow">YOUR ACCOUNT</span><h1>My bookings.</h1><p>Keep track of the rentals you've confirmed with CarZest.</p></div></section>
+<section class="section-pad pt-4"><div class="container">
+  {% if bookings %}
+  <div class="row g-4">
+    {% for booking in bookings %}
+    <div class="col-lg-6">
+      <article class="booking-card">
+        <div class="d-flex justify-content-between align-items-start gap-3"><div><span class="booking-id">BOOKING #{{ booking.order_id }}</span><h2>{{ booking.cars }}</h2></div><span class="status-badge">{{ booking.status }}</span></div>
+        <div class="booking-grid"><div><span>Pickup</span><strong>{{ booking.date }}</strong></div><div><span>Duration</span><strong>{{ booking.days_for_rent }} day{{ booking.days_for_rent|pluralize }}</strong></div><div><span>From</span><strong>{{ booking.loc_from }}</strong></div><div><span>To</span><strong>{{ booking.loc_to }}</strong></div></div>
+        <div class="booking-total"><span>Total rental</span><strong>₹{{ booking.total_rent|floatformat:0 }}</strong></div>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state"><i class="bi bi-calendar-x"></i><h3>No bookings yet</h3><p>Pick a vehicle and your first booking will appear here.</p><a class="btn btn-dark" href="{% url 'vehicles' %}">Browse vehicles</a></div>
+  {% endif %}
+</div></section>
+{% endblock %}

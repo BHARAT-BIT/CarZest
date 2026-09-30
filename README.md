@@ -192,3 +192,20 @@ Potential next steps include:
 ## License
 
 Add the appropriate license and attribution information from the original project before publishing if the original repository's license requires it.
+## 📸 Screenshots
+
+### Homepage
+
+![CarZest Homepage](screenshots/homepage.png)
+
+### Vehicle Fleet
+
+![CarZest Vehicle Fleet](screenshots/vehicles.png)
+
+### Booking
+
+![CarZest Booking](screenshots/bookin.png)
+
+### Admin Dashboard
+
+![CarZest Admin Dashboard](screenshots/admin.png)

@@ -191,7 +191,20 @@ Potential next steps include:
 
 ## License
 
-Add the appropriate license and attribution information from the original project before publishing if the original repository's license requires it.
+## Original Project Context & Credits
+
+CarZest began as a collaborative hackathon project built by bhavyatiwari10 and me.
+This repository is my refreshed version of that project. The original concept
+is retained, and I reworked the following:
+
+- Replaced hard-coded vehicle choices with database-driven listings
+- Added login-protected fleet and booking pages and a per-user **My Bookings** history
+- Added server-side rental-price calculation and booking validation
+- Moved the Django secret key and allowed hosts to environment configuration
+- Added automated tests for authentication, vehicle access and booking calculations
+- Rebuilt the frontend (Bootstrap 5) and improved the Django admin
+
+
 ## 📸 Screenshots
 
 ### Homepage
